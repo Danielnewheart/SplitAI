@@ -1,0 +1,68 @@
+.input-view {
+    padding: 3rem 4rem;
+    border-radius: 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: start;
+    margin-bottom: .5rem;
+}
+
+.input-form__question {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    width: 100%;
+    font-weight: 500;
+    
+    & > label {
+        margin-bottom: 0.3rem;
+    }
+
+    select, input, textarea {
+        align-self: stretch;
+    }
+}
+
+.input-form__currency-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-form__currency-btn {
+    color: #7c478c;
+    border: 1px solid #cb67ea;
+    background-color: #fcfcfc;
+
+    &:hover {
+        background-color: #fcfcfc;
+    }
+    
+    &.chosen {
+        background-color: #9f38bf;
+        border: none;
+        color: white;
+        cursor: default;
+    }
+
+}
+
+.amount-currency {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.submit-button {
+    align-self: stretch;
+}
+

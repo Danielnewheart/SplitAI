@@ -1,0 +1,106 @@
+#root {
+  max-width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 4rem 0rem;
+  text-align: center;
+}
+
+.app {
+  height: 100%;
+}
+
+.asterisk {
+  color: #a019be;
+
+}
+
+.reminder {
+  color: #7e7e80;
+  font-size: 0.9rem;
+}
+
+.error, .input-form__error {
+  color: #a019be;
+  font-size: 0.9rem;
+}
+
+.view-title {
+  color: #7e7e80;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.popup {
+  position: absolute;
+  top: 30vh;
+  z-index: 100;
+  width: 70vw;
+  max-width: 34rem;
+
+  background-color: #d164cc;
+  border-radius: 3rem;
+  padding: 1rem;
+  color: white;
+  box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
+
+
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.setting-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.logout {
+  margin-top: 1rem;
+  border-radius: .5rem;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  background-color: #7236e1;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background-color: #8953ed;
+  }
+}
+
+.session-error, .expense-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  padding: .5rem 1.5rem;
+  border-radius: 3rem;
+  background-color: #a019be;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+
+  & > button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+  }
+  & > button:hover, & > button:focus, & > button:focus-visible{
+    background-color: transparent;
+  }
+}
+

@@ -1,0 +1,177 @@
+/* Modal for add new group */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    max-width: 34rem;
+
+    background-color: transparent;
+    border: none;
+
+    overflow: visible;
+
+    &>.add-new-group {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    &>.close-modal {
+        position: absolute;
+        top: 2.8rem;
+        right: 2.8rem;
+        transform: translate(50%, -50%);
+        padding: 0.5rem;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: #191919;
+        z-index: 1;
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* GroupsView */
+.groups-view, .group-view {
+    position: relative;
+    width: 80vw;
+    max-width: 60rem;
+}
+
+.groups-view__header, .group-view__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.group {
+    position: relative;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #191919;
+    border-radius: 1rem;
+    border: 1px solid #c6aec3;
+
+    min-height: 10rem;
+
+    &:hover {
+        background-color: rgba(244, 236, 247, 0.8);
+    }
+}
+
+.group__name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.group__icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: #4f4f4f;
+}
+
+
+/* active group view */
+
+.group-view__buttons {
+    display: flex;
+    gap: .5rem;
+}
+.group-expenses {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+.expense-group__date {
+    font-size: 0.9rem;
+    color: #7c7c7c;
+}
+.expense-group__title {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.group-expense {
+    position: relative;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #191919;
+    border-radius: 1rem;
+    border: 1px solid #c6aec3;
+
+    min-height: 5rem;
+    width: 100%;
+
+    &:hover {
+            background-color: rgba(244, 236, 247, 0.8);
+        }
+}
+
+.owe {
+    margin: 1rem;
+}
+
+/* Active expense view */
+.active-expense-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.group-expense.active-expense {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+.group-expense__item.active-expense {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.expense-group__title.active-expense {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Group Info View */
+
+.group-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.add-member {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+
