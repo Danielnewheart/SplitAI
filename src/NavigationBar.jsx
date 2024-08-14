@@ -8,7 +8,7 @@ function NavigationBar({ currentPage, onNavigate }) {
         window.history.pushState(null, "", e.target.pathname);
     };
 
-    const paths = { "/groups": "Group", "/": "Home", "/setting": "Setting" };
+    const paths = { "/groups": "Group", "/": "Home", "/setting": "Setting", "/chat": "Chat" };
     return (
         <div className="nav-bar">
             {Object.keys(paths).map((path) => (
