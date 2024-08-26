@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatPlatform.css';
 
-const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
-
 function ChatPlatform() {
     const [messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
+    const [error, setError] = useState(null);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -17,30 +16,31 @@ function ChatPlatform() {
     const sendMessage = async () => {
         if (inputMessage.trim() === '') return;
 
-        setMessages([...messages, { text: inputMessage, sender: 'user' }]);
+        setMessages(prev => [...prev, { text: inputMessage, sender: 'user' }]);
+        setInputMessage('');
 
         try {
-            const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
+            const response = await fetch('http://localhost:3000/api/process-expense', { // Update to your server endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${GEMINI_API_KEY}`
                 },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: inputMessage }] }]
-                })
+                body: JSON.stringify({ text: inputMessage }) // Adjust based on Gemini API requirements
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
             const data = await response.json();
-            const aiResponse = data.candidates[0].content.parts[0].text;
-
-            setMessages(prevMessages => [...prevMessages, { text: aiResponse, sender: 'ai' }]);
+            console.log(data); // Print output to the terminal
+            const aiResponse = JSON.stringify(data, null, 2);
+            setMessages(prev => [...prev, { text: aiResponse, sender: 'ai' }]);
         } catch (error) {
-            console.error('Error calling Gemini AI:', error);
-            setMessages(prevMessages => [...prevMessages, { text: "Sorry, I couldn't process that request.", sender: 'ai' }]);
+            console.error('Error calling API:', error);
+            setError('Failed to process the message. Please try again.');
+            setMessages(prev => [...prev, { text: "Sorry, there was an error processing your request.", sender: 'ai' }]);
         }
-
-        setInputMessage('');
     };
 
     return (
@@ -56,6 +56,7 @@ function ChatPlatform() {
                 ))}
                 <div ref={messagesEndRef} />
             </div>
+            {error && <div className="error-message">{error}</div>}
             <div className="chat-input">
                 <input
                     type="text"
